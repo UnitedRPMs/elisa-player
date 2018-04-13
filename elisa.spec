@@ -67,7 +67,9 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
 %check
 desktop-file-validate %{buildroot}/%{_kf5_datadir}/applications/org.kde.elisa.desktop
+%if 0%{?fedora} >= 28
 appstream-util validate-relax --nonet %{buildroot}/%{_kf5_datadir}/metainfo/org.kde.elisa.appdata.xml
+%endif
 
 %post
 /usr/bin/update-desktop-database &> /dev/null || :

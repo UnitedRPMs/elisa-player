@@ -94,8 +94,11 @@ fi
 %{_kf5_datadir}/icons/hicolor/scalable/apps/elisa.svg
 %{_kf5_datadir}/kpackage/kcms/kcm_elisa_local_file/
 %{_kf5_datadir}/kservices5/kcm_elisa_local_file.desktop
+%if 0%{?fedora} >= 28
 %{_kf5_datadir}/metainfo/org.kde.elisa.appdata.xml
-
+%else
+%{_kf5_datadir}/appdata/*.appdata.xml
+%endif
 
 %changelog
 

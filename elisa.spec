@@ -1,5 +1,5 @@
 Name:           elisa
-Version:        0.1
+Version:        0.1.1
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -103,6 +103,9 @@ fi
 %endif
 
 %changelog
+
+* Wed Apr 18 2018 David Vásquez <davidva AT tutanota DOT com> 0.1.1-1
+- Updated to 0.1.1
 
 * Fri Apr 13 2018 David Vásquez <davidva AT tutanota DOT com> 0.1-1
 - Initial packaging of elisa

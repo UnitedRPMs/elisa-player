@@ -1,5 +1,5 @@
 Name:           elisa
-Version:        0.1.80
+Version:        0.2.0
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -103,6 +103,9 @@ fi
 %endif
 
 %changelog
+
+* Wed Jul 04 2018 David Vásquez <davidva AT tuta DOT io> 0.2.0-1
+- Updated to 0.2.0
 
 * Thu Jun 14 2018 David Vásquez <davidva AT tuta DOT io> 0.1.80-1
 - Updated to 0.1.80

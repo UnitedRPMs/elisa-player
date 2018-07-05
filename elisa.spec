@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
+BuildRequires:	kf5-kio-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	libappstream-glib
 Requires:	elementary-theme
@@ -102,6 +103,12 @@ fi
 %else
 %{_kf5_datadir}/appdata/*.appdata.xml
 %endif
+%{_kf5_libdir}/libelisaLib.so
+%{_kf5_libdir}/libelisaLib.so.0
+%{_kf5_libdir}/libelisaLib.so.0.1
+%{_prefix}/qml/org/kde/elisa/libelisaqmlplugin.so
+%{_prefix}/qml/org/kde/elisa/qmldir
+
 
 %changelog
 

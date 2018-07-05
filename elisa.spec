@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(Qt5Sql) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
 BuildRequires:	desktop-file-utils
 BuildRequires:	libappstream-glib
 Requires:	elementary-theme

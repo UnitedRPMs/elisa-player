@@ -107,13 +107,8 @@ fi
 %{_kf5_libdir}/libelisaLib.so
 %{_kf5_libdir}/libelisaLib.so.0
 %{_kf5_libdir}/libelisaLib.so.0.1
-%if 0%{?fedora} >= 29
-%{_prefix}/qml/org/kde/elisa/libelisaqmlplugin.so
-%{_prefix}/qml/org/kde/elisa/qmldir
-%else
 %{_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
-%endif
 
 %changelog
 

@@ -34,6 +34,7 @@ BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
+BuildRequires:	qt5-qtbase-devel
 BuildRequires:	kf5-kio-devel
 BuildRequires:	desktop-file-utils
 BuildRequires:	libappstream-glib

@@ -1,5 +1,5 @@
 Name:           elisa
-Version:        0.2.1
+Version:        0.2.80
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -111,6 +111,9 @@ fi
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
 
 %changelog
+
+* Sat Sep 08 2018 David Va <davidva AT tuta DOT io> 0.2.80-1
+- Updated to 0.2.80
 
 * Fri Jul 13 2018 David Va <davidva AT tuta DOT io> 0.2.1-1
 - Updated to 0.2.1

@@ -1,5 +1,7 @@
+%global debug_package %{nil}
+
 Name:           elisa
-Version:        0.2.80
+Version:        0.3.0
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -56,8 +58,10 @@ built and played.
 %build
 mkdir %{_target_platform}
 pushd %{_target_platform}
-%{cmake_kf5}  \
-    -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=OFF -DKDE_INSTALL_USE_QT_SYS_PATHS=ON ..
+cmake \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib64 \
+    -DBUILD_TESTING=OFF ..
 popd
 
 make %{?_smp_mflags} -C %{_target_platform}
@@ -99,18 +103,21 @@ fi
 %{_kf5_datadir}/icons/hicolor/scalable/apps/elisa.svg
 %{_kf5_datadir}/kpackage/kcms/kcm_elisa_local_file/
 %{_kf5_datadir}/kservices5/kcm_elisa_local_file.desktop
+%{_kf5_libdir}/elisa/libelisaLib.so
+%{_kf5_libdir}/elisa/libelisaLib.so.0
+%{_kf5_libdir}/elisa/libelisaLib.so.0.1
 %if 0%{?fedora} >= 28
 %{_kf5_datadir}/metainfo/org.kde.elisa.appdata.xml
 %else
 %{_kf5_datadir}/appdata/*.appdata.xml
 %endif
-%{_kf5_libdir}/libelisaLib.so
-%{_kf5_libdir}/libelisaLib.so.0
-%{_kf5_libdir}/libelisaLib.so.0.1
-%{_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
-%{_libdir}/qt5/qml/org/kde/elisa/qmldir
+%{_kf5_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
+%{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
 
 %changelog
+
+* Mon Oct 01 2018 David Va <davidva AT tuta DOT io> 0.3.0-1
+- Updated to 0.3.0
 
 * Sat Sep 08 2018 David Va <davidva AT tuta DOT io> 0.2.80-1
 - Updated to 0.2.80

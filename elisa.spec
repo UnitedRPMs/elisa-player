@@ -1,14 +1,14 @@
 %global debug_package %{nil}
 
 Name:           elisa
-Version:        0.3.0
+Version:        0.3.80
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
 Group:		Applications/Multimedia
 URL:            https://community.kde.org/Elisa
 
-Source0:	https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:	https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Baloo) >= 5.32.0
@@ -34,8 +34,11 @@ BuildRequires:  pkgconfig(Qt5Quick) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Sql) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0 
+BuildRequires:	pkgconfig(Qt5QuickWidgets) >= 5.9.0
 BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
+BuildRequires:	vlc-devel
+BuildRequires:	kf5-kirigami2-devel
 BuildRequires:	qt5-qtbase-devel
 BuildRequires:	kf5-kio-devel
 BuildRequires:	desktop-file-utils
@@ -72,12 +75,6 @@ make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 %find_lang %{name} --with-kde
 %find_lang kcm_elisa_local_file
 
-%check
-desktop-file-validate %{buildroot}/%{_kf5_datadir}/applications/org.kde.elisa.desktop
-%if 0%{?fedora} >= 28
-appstream-util validate-relax --nonet %{buildroot}/%{_kf5_datadir}/metainfo/org.kde.elisa.appdata.xml
-%endif
-
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
 /bin/touch --no-create %{_datadir}/icons/hicolor &> /dev/null || :
@@ -103,7 +100,6 @@ fi
 %{_kf5_datadir}/icons/hicolor/scalable/apps/elisa.svg
 %{_kf5_datadir}/kpackage/kcms/kcm_elisa_local_file/
 %{_kf5_datadir}/kservices5/kcm_elisa_local_file.desktop
-%{_kf5_libdir}/elisa/libelisaLib.so
 %{_kf5_libdir}/elisa/libelisaLib.so.0
 %{_kf5_libdir}/elisa/libelisaLib.so.0.1
 %if 0%{?fedora} >= 28
@@ -115,6 +111,9 @@ fi
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
 
 %changelog
+
+* Thu May 16 2019 David Va <davidva AT tuta DOT io> 0.3.80-1
+- Updated to 0.3.80
 
 * Mon Oct 01 2018 David Va <davidva AT tuta DOT io> 0.3.0-1
 - Updated to 0.3.0

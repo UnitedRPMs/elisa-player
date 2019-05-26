@@ -1,14 +1,14 @@
 %global debug_package %{nil}
 
 Name:           elisa
-Version:        0.3.80
+Version:        0.4.0
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
 Group:		Applications/Multimedia
 URL:            https://community.kde.org/Elisa
 
-Source0:	https://download.kde.org/unstable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:	https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Baloo) >= 5.32.0
@@ -111,6 +111,9 @@ fi
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
 
 %changelog
+
+* Sat May 25 2019 David Va <davidva AT tuta DOT io> 0.4.0-1
+- Updated to 0.4.0
 
 * Thu May 16 2019 David Va <davidva AT tuta DOT io> 0.3.80-1
 - Updated to 0.3.80

@@ -1,7 +1,7 @@
 %global debug_package %{nil}
 
 Name:           elisa
-Version:        0.4.0
+Version:        0.4.2
 Release:        1%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -111,6 +111,9 @@ fi
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
 
 %changelog
+
+* Thu Jul 11 2019 David Va <davidva AT tuta DOT io> 0.4.2-1
+- Updated to 0.4.2
 
 * Sat May 25 2019 David Va <davidva AT tuta DOT io> 0.4.0-1
 - Updated to 0.4.0

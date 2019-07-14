@@ -7,3 +7,4 @@ SRPMS/*
 *.tar.gz
 *.tar.xz
 .directory
+*.rpm

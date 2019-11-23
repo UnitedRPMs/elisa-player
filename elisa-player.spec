@@ -1,14 +1,18 @@
 %global debug_package %{nil}
+%global realname elisa
 
-Name:           elisa
-Version:        0.4.2
-Release:        1%{dist}
+%bcond_without lang
+
+
+Name:           elisa-player
+Version:        19.11.80
+Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
 Group:		Applications/Multimedia
 URL:            https://community.kde.org/Elisa
 
-Source0:	https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:	https://github.com/KDE/elisa/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(KF5Baloo) >= 5.32.0
@@ -56,7 +60,7 @@ built and played.
 
 
 %prep
-%autosetup 
+%autosetup -n %{realname}-%{version}
 
 %build
 mkdir %{_target_platform}
@@ -72,8 +76,10 @@ make %{?_smp_mflags} -C %{_target_platform}
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
-%find_lang %{name} --with-kde
-%find_lang kcm_elisa_local_file
+  %if ! %{with lang}
+    %find_lang %{realname} --with-man --all-name
+    %{kf5_find_htmldocs}
+  %endif
 
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
@@ -86,12 +92,15 @@ if [ $1 -eq 0 ] ; then
     /usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 fi
 
-%posttrans
-/usr/bin/gtk-update-icon-cache %{_datadir}/icons/hicolor &> /dev/null || :
 
-%files -f %{name}.lang -f kcm_elisa_local_file.lang
+
+%if ! %{with lang}
+%files -f %{realname}.lang
+%else
+%files 
+%endif
 %doc README*
-%license COPYING* LICENSE*
+%license COPYING* 
 %{_kf5_bindir}/elisa
 %{_kf5_qtplugindir}/kcms/kcm_elisa_local_file.so
 %{_kf5_datadir}/applications/org.kde.elisa.desktop
@@ -102,15 +111,15 @@ fi
 %{_kf5_datadir}/kservices5/kcm_elisa_local_file.desktop
 %{_kf5_libdir}/elisa/libelisaLib.so.0
 %{_kf5_libdir}/elisa/libelisaLib.so.0.1
-%if 0%{?fedora} >= 28
-%{_kf5_datadir}/metainfo/org.kde.elisa.appdata.xml
-%else
-%{_kf5_datadir}/appdata/*.appdata.xml
-%endif
+%{_kf5_datadir}/metainfo/*.appdata.xml
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
+%{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Fri Nov 22 2019 David Va <davidva AT tuta DOT io> 19.11.80-1
+- Updated to 19.11.80
 
 * Thu Jul 11 2019 David Va <davidva AT tuta DOT io> 0.4.2-1
 - Updated to 0.4.2

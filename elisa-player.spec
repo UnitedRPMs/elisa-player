@@ -5,7 +5,7 @@
 
 
 Name:           elisa-player
-Version:        19.11.80
+Version:        19.12.1
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -109,14 +109,16 @@ fi
 %{_kf5_datadir}/icons/hicolor/scalable/apps/elisa.svg
 %{_kf5_datadir}/kpackage/kcms/kcm_elisa_local_file/
 %{_kf5_datadir}/kservices5/kcm_elisa_local_file.desktop
-%{_kf5_libdir}/elisa/libelisaLib.so.0
-%{_kf5_libdir}/elisa/libelisaLib.so.0.1
+%{_kf5_libdir}/elisa/libelisaLib.so.*
 %{_kf5_datadir}/metainfo/*.appdata.xml
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Sat Jan 25 2020 David Va <davidva AT tuta DOT io> 19.12.1-1
+- Updated to 19.12.1
 
 * Fri Nov 22 2019 David Va <davidva AT tuta DOT io> 19.11.80-1
 - Updated to 19.11.80

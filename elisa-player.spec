@@ -102,13 +102,10 @@ fi
 %doc README*
 %license COPYING* 
 %{_kf5_bindir}/elisa
-%{_kf5_qtplugindir}/kcms/kcm_elisa_local_file.so
 %{_kf5_datadir}/applications/org.kde.elisa.desktop
 %{_kf5_docdir}/HTML/*/elisa/
 %{_kf5_datadir}/icons/hicolor/*/apps/elisa.png
 %{_kf5_datadir}/icons/hicolor/scalable/apps/elisa.svg
-%{_kf5_datadir}/kpackage/kcms/kcm_elisa_local_file/
-%{_kf5_datadir}/kservices5/kcm_elisa_local_file.desktop
 %{_kf5_libdir}/elisa/libelisaLib.so.*
 %{_kf5_datadir}/metainfo/*.appdata.xml
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so

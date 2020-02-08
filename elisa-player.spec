@@ -2,10 +2,11 @@
 %global realname elisa
 
 %bcond_without lang
-
+# 
+%define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        19.12.1
+Version:        19.12.2
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -114,10 +115,13 @@ fi
 
 %changelog
 
-* Sat Jan 25 2020 David Va <davidva AT tuta DOT io> 19.12.1-1
+* Fri Feb 07 2020 David Va <davidva AT tuta DOT io> 19.12.2-7
+- Updated to 19.12.2
+
+* Sat Jan 25 2020 David Va <davidva AT tuta DOT io> 19.12.1-7
 - Updated to 19.12.1
 
-* Fri Nov 22 2019 David Va <davidva AT tuta DOT io> 19.11.80-1
+* Fri Nov 22 2019 David Va <davidva AT tuta DOT io> 19.11.80-7
 - Updated to 19.11.80
 
 * Thu Jul 11 2019 David Va <davidva AT tuta DOT io> 0.4.2-1

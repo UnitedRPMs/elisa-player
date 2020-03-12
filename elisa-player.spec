@@ -23,7 +23,7 @@
 %define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        19.12.2
+Version:        19.12.3
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -131,6 +131,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Wed Mar 11 2020 David Va <davidva AT tuta DOT io> 19.12.3-7
+- Updated to 19.12.3
 
 * Fri Feb 07 2020 David Va <davidva AT tuta DOT io> 19.12.2-7
 - Updated to 19.12.2

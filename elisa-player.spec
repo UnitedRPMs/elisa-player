@@ -130,11 +130,7 @@ fi
 
 
 
-%if ! %{with lang}
 %files -f %{realname}.lang
-%else
-%files 
-%endif
 %doc README*
 %license COPYING* 
 %{_kf5_bindir}/elisa

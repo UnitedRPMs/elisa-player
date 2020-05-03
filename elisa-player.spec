@@ -15,58 +15,78 @@
 # Please submit bugfixes or comments via https://goo.gl/zqFJft
 #
 
+# elisa-player
+%global commit0 f524d5e1de54f093e538a0521e215f221a866620
+%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+
+# upnp-lib-qt
+%global commit1 4ab091a78b788477590407c5e98181882c3f3d8a
+%global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
+
 %global debug_package %{nil}
 %global realname elisa
-
-%bcond_without lang
 # 
-%define _legacy_common_support 1
+#define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        19.12.3
+Version:        20.04.0
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
 Group:		Applications/Multimedia
 URL:            https://community.kde.org/Elisa
 
-Source0:	https://github.com/KDE/elisa/archive/v%{version}.tar.gz
+Source0:	https://github.com/KDE/elisa/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
+Source1:	https://github.com/KDE/upnp-lib-qt/archive/%{commit1}.tar.gz#/upnp-lib-qt-%{shortcommit1}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  pkgconfig
-BuildRequires:  cmake(KF5Baloo) >= 5.32.0
-BuildRequires:  cmake(KF5Config) >= 5.32.0
-BuildRequires:  cmake(KF5ConfigWidgets) >= 5.32.0
-BuildRequires:  cmake(KF5CoreAddons) >= 5.32.0
-BuildRequires:  cmake(KF5Crash) >= 5.32.0
-BuildRequires:  cmake(KF5DBusAddons) >= 5.32.0
-BuildRequires:  cmake(KF5Declarative) >= 5.32.0
-BuildRequires:  cmake(KF5DocTools) >= 5.39.0
-BuildRequires:  cmake(KF5FileMetaData) >= 5.32.0
-BuildRequires:  cmake(KF5I18n) >= 5.32.0
-BuildRequires:  cmake(KF5KCMUtils) >= 5.32.0
-BuildRequires:  cmake(KF5Package) >= 5.32.0
-BuildRequires:  cmake(KF5XmlGui) >= 5.32.0
-BuildRequires:  pkgconfig(Qt5Core) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5DBus) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Gui) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Multimedia) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Network) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Qml) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Quick) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Sql) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Svg) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Test) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5Widgets) >= 5.9.0 
-BuildRequires:	pkgconfig(Qt5QuickWidgets) >= 5.9.0
-BuildRequires:  pkgconfig(Qt5QuickControls2) >= 5.9.0
+	
+BuildRequires:  gcc-c++
+BuildRequires:  cmake
+BuildRequires:  extra-cmake-modules
+BuildRequires:  desktop-file-utils
+BuildRequires:  libappstream-glib
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Qml)
+BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5Multimedia)
+BuildRequires:  cmake(Qt5Svg)
+BuildRequires:  cmake(Qt5Gui)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Quick)
+BuildRequires:  cmake(Qt5QuickTest)
+BuildRequires:  cmake(Qt5QuickControls2)
+BuildRequires:  cmake(Qt5DBus)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5Config)
+BuildRequires:  cmake(KF5KCMUtils)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Baloo)
+BuildRequires:  cmake(KF5Declarative)
+BuildRequires:  cmake(KF5CoreAddons)
+BuildRequires:  cmake(KF5FileMetaData)
+BuildRequires:  cmake(KF5ConfigWidgets)
+BuildRequires:  cmake(KF5Package)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DBusAddons)
+BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  qt5-qtbase-private-devel
+
 BuildRequires:	vlc-devel
-BuildRequires:	kf5-kirigami2-devel
-BuildRequires:	qt5-qtbase-devel
-BuildRequires:	kf5-kio-devel
 BuildRequires:	desktop-file-utils
-BuildRequires:	libappstream-glib
-Requires:	elementary-theme
-Requires:	elementary-icon-theme
+
+# Not yet ready
+#BuildRequires:	upnp-player-qt-devel
+#BuildRequires:	kdsoap-devel
+	
+Requires:       hicolor-icon-theme
+Requires:       kde-filesystem
+Requires:       qt5-qtquickcontrols
+Recommends:	elementary-theme
+Recommends:	elementary-icon-theme
+
 
 %description
 Elisa is a music player with a library where music can be browsed by
@@ -78,26 +98,24 @@ built and played.
 
 
 %prep
-%autosetup -n %{realname}-%{version}
+%autosetup -n %{realname}-%{commit0} -a1
+rm -rf src/upnp/
+mv -f upnp-lib-qt-%{commit1}/src src/upnp
+
 
 %build
 mkdir %{_target_platform}
 pushd %{_target_platform}
-cmake \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib64 \
-    -DBUILD_TESTING=OFF ..
+%cmake -DCMAKE_INSTALL_LIBDIR=lib64 ..
 popd
 
-make %{?_smp_mflags} -C %{_target_platform}
+%make_build -C %{_target_platform}
 
 %install
 make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
 
-  %if ! %{with lang}
-    %find_lang %{realname} --with-man --all-name
-    %{kf5_find_htmldocs}
-  %endif
+%find_lang elisa --all-name --with-kde --with-html
+
 
 %post
 /usr/bin/update-desktop-database &> /dev/null || :
@@ -131,6 +149,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Sat May 02 2020 David Va <davidva AT tuta DOT io> 20.04.0-7
+- Updated to 20.04.0
 
 * Wed Mar 11 2020 David Va <davidva AT tuta DOT io> 19.12.3-7
 - Updated to 19.12.3

@@ -16,7 +16,7 @@
 #
 
 # elisa-player
-%global commit0 f524d5e1de54f093e538a0521e215f221a866620
+%global commit0 3508b655761228f9f35b5649a11eae4af691812f
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        20.04.0
+Version:        20.04.1
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -86,6 +86,7 @@ Requires:       kde-filesystem
 Requires:       qt5-qtquickcontrols
 Recommends:	elementary-theme
 Recommends:	elementary-icon-theme
+Recommends:	humanity-icon-theme
 
 
 %description
@@ -145,6 +146,10 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Sat May 16 2020 David Va <davidva AT tuta DOT io> 20.04.1-7
+- Added recommends humanity-icon-theme
+- Updated to 20.04.1
 
 * Sat May 02 2020 David Va <davidva AT tuta DOT io> 20.04.0-7
 - Updated to 20.04.0

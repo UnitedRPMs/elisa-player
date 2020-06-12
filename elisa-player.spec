@@ -16,7 +16,7 @@
 #
 
 # elisa-player
-%global commit0 3508b655761228f9f35b5649a11eae4af691812f
+%global commit0 715be7857b610ac0b62151577bffb522b579c0b9
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        20.04.1
+Version:        20.04.2
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -146,6 +146,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Thu Jun 11 2020 David Va <davidva AT tuta DOT io> 20.04.2-7
+- Updated to 20.04.2
 
 * Sat May 16 2020 David Va <davidva AT tuta DOT io> 20.04.1-7
 - Added recommends humanity-icon-theme

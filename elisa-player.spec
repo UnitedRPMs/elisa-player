@@ -20,7 +20,7 @@
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
-%global commit1 11d76f783d687be4aa9b5a02941930c6f4aa6dea
+%global commit1 38b99cdf4af06f58b950b1444d10dff191490cb7
 %global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 %global debug_package %{nil}

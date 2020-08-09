@@ -16,7 +16,7 @@
 #
 
 # elisa-player
-%global commit0 715be7857b610ac0b62151577bffb522b579c0b9
+%global commit0 eb19e80c4266ef7f7d1226d2b459b31164579dc2
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        20.04.3
+Version:        20.07.90
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -100,22 +100,21 @@ built and played.
 
 %prep
 %autosetup -n %{realname}-%{commit0} -a1
-rm -rf src/upnp/
-mv -f upnp-lib-qt-%{commit1}/src src/upnp
+#rm -rf src/upnp/
+#mv -f upnp-lib-qt-%{commit1}/src src/upnp
 
 
 %build
-mkdir %{_target_platform}
-pushd %{_target_platform}
-%cmake -DCMAKE_INSTALL_LIBDIR=lib64 ..
-popd
+mkdir -p %{_target_platform}; pushd %{_target_platform}
+%cmake -DCMAKE_INSTALL_LIBDIR=lib64 -DBUILD_TESTING=OFF ..
 
-%make_build -C %{_target_platform}
+%cmake_build 
 
 %install
-make install/fast DESTDIR=%{buildroot} -C %{_target_platform}
+pushd %{_target_platform}
+%cmake_install
 
-%find_lang elisa --all-name --with-kde --with-html
+#find_lang --all-name --with-kde --with-html
 
 
 %post
@@ -131,7 +130,8 @@ fi
 
 
 
-%files -f %{realname}.lang
+%files 
+#-f %{realname}.lang
 %doc README*
 %license COPYING* 
 %{_kf5_bindir}/elisa
@@ -143,9 +143,13 @@ fi
 %{_kf5_datadir}/metainfo/*.appdata.xml
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_kf5_libdir}/qt5/qml/org/kde/elisa/qmldir
+%{_kf5_libdir}/qt5/qml/org/kde/elisa/plugins.qmltypes
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Sat Aug 08 2020 David Va <davidva AT tuta DOT io> 20.07.90-7
+- Updated to 20.07.90
 
 * Thu Jul 09 2020 David Va <davidva AT tuta DOT io> 20.04.3-7
 - Updated to 20.04.3

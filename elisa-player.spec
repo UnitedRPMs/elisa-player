@@ -20,7 +20,7 @@
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
-%global commit1 38b99cdf4af06f58b950b1444d10dff191490cb7
+%global commit1 755dfe4e8d4c2e727466d49a7d927daf16b764de
 %global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 %global debug_package %{nil}
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        20.08.0
+Version:        20.08.1
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -37,7 +37,7 @@ Group:		Applications/Multimedia
 URL:            https://community.kde.org/Elisa
 
 Source0:	https://github.com/KDE/elisa/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
-Source1:	https://github.com/KDE/upnp-lib-qt/archive/%{commit1}.tar.gz#/upnp-lib-qt-%{shortcommit1}.tar.gz
+#Source1:	https://github.com/KDE/upnp-lib-qt/archive/%{commit1}.tar.gz#/upnp-lib-qt-%{shortcommit1}.tar.gz
 BuildRequires:  cmake
 	
 BuildRequires:  gcc-c++
@@ -99,7 +99,7 @@ built and played.
 
 
 %prep
-%autosetup -n %{realname}-%{commit0} -a1
+%autosetup -n %{realname}-%{commit0} 
 #rm -rf src/upnp/
 #mv -f upnp-lib-qt-%{commit1}/src src/upnp
 
@@ -147,6 +147,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Mon Sep 14 2020 David Va <davidva AT tuta DOT io> 20.08.1-7
+- Updated to 20.08.1
 
 * Thu Aug 27 2020 David Va <davidva AT tuta DOT io> 20.08.0-7
 - Updated to 20.08.0

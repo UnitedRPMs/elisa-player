@@ -20,7 +20,7 @@
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
-%global commit1 755dfe4e8d4c2e727466d49a7d927daf16b764de
+%global commit1 904dc9fbdb007b3690dd58d77307679811256f3c
 %global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
 
 %global debug_package %{nil}
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        20.08.2
+Version:        20.12.0
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -147,6 +147,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Sun Dec 20 2020 David Va <davidva AT tuta DOT io> 20.12.0-7
+- Updated to 20.12.0
 
 * Sat Oct 10 2020 David Va <davidva AT tuta DOT io> 20.08.2-7
 - Updated to 20.08.2

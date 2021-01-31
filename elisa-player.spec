@@ -1,7 +1,7 @@
 #
 # spec file for package elisa-player
 #
-# Copyright (c) 2020 UnitedRPMs.
+# Copyright (c) 2021 UnitedRPMs.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 # elisa-player
-%global commit0 31ecf80e1fa90d0aca4f56b3b50196fae7440ba7
+%global commit0 5fa0352bc55558c41bafdc52a7c6fd1367902498
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        20.12.0
+Version:        20.12.1
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -147,6 +147,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Mon Jan 25 2021 David Va <davidva AT tuta DOT io> 20.12.1-7
+- Updated to 20.12.1
 
 * Sun Dec 20 2020 David Va <davidva AT tuta DOT io> 20.12.0-7
 - Updated to 20.12.0

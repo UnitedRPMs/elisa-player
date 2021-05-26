@@ -16,7 +16,7 @@
 #
 
 # elisa-player
-%global commit0 61ed83caaaac6b74d2a552fb6114aa936afcb109
+%global commit0 7102c7385cf1a454f52df2f3b18d08f9d0d3a3b7
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        21.04.0
+Version:        21.04.1
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -38,6 +38,7 @@ URL:            https://community.kde.org/Elisa
 
 Source0:	https://github.com/KDE/elisa/archive/%{commit0}.tar.gz#/%{name}-%{shortcommit0}.tar.gz
 #Source1:	https://github.com/KDE/upnp-lib-qt/archive/%{commit1}.tar.gz#/upnp-lib-qt-%{shortcommit1}.tar.gz
+Patch:		fixes.patch
 BuildRequires:  cmake
 	
 BuildRequires:  gcc-c++
@@ -99,7 +100,7 @@ built and played.
 
 
 %prep
-%autosetup -n %{realname}-%{commit0} 
+%autosetup -n %{realname}-%{commit0}  -p1
 #rm -rf src/upnp/
 #mv -f upnp-lib-qt-%{commit1}/src src/upnp
 
@@ -146,6 +147,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Sat May 22 2021 David Va <davidva AT tuta DOT io> 21.04.1-7
+- Updated to 21.04.1
 
 * Mon Apr 26 2021 David Va <davidva AT tuta DOT io> 21.04.0-7
 - Updated to 21.04.0

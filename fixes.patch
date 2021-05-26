@@ -1,0 +1,18 @@
+diff -ruN orig/CMakeLists.txt new/CMakeLists.txt
+--- orig/CMakeLists.txt	2021-05-07 12:40:04.000000000 -0600
++++ new/CMakeLists.txt	2021-05-25 01:19:50.771915722 -0600
+@@ -17,12 +17,12 @@
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_STANDARD 17)
+ 
+-set(REQUIRED_QT_VERSION "5.15.0")
++set(REQUIRED_QT_VERSION "5.14.2")
+ find_package(Qt5 ${REQUIRED_QT_VERSION} CONFIG REQUIRED Core Network Qml Quick Test Sql Multimedia Svg Gui Widgets QuickTest Concurrent QuickControls2)
+ 
+ find_package(Qt5Core ${REQUIRED_QT_VERSION} CONFIG REQUIRED Private)
+ 
+-set(REQUIRED_KF5_VERSION "5.77.0")
++set(REQUIRED_KF5_VERSION "5.75.0")
+ find_package(ECM ${REQUIRED_KF5_VERSION} REQUIRED NO_MODULE)
+ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${ECM_MODULE_PATH})
+ 

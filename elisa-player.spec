@@ -16,7 +16,7 @@
 #
 
 # elisa-player
-%global commit0 e6ffd155e4e3a9ae53fc419dc3ff087c4a8ebfda
+%global commit0 761c696bb46a1d3afd4fc09a2f6aaca1d5b5fb77
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 
 # upnp-lib-qt
@@ -29,7 +29,7 @@
 #define _legacy_common_support 1
 
 Name:           elisa-player
-Version:        21.04.2
+Version:        21.07.80
 Release:        7%{dist}
 Summary:        A simple music player aiming to provide a nice experience for its users
 License:        LGPLv3+
@@ -73,6 +73,7 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Kirigami2)
+BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  qt5-qtbase-private-devel
 
 BuildRequires:	vlc-devel
@@ -147,6 +148,9 @@ fi
 %{_kf5_datadir}/qlogging-categories5/elisa.categories
 
 %changelog
+
+* Wed Jul 28 2021 David Va <davidva AT tuta DOT io> 21.07.80-7
+- Updated to 21.07.80
 
 * Mon Jun 28 2021 David Va <davidva AT tuta DOT io> 21.04.2-7
 - Updated to 21.04.2
